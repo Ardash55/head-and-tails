@@ -1,13 +1,10 @@
-let score = {
+let score = JSON.parse(localStorage.getItem('score')) || {
     wins: 0,
     loses: 0
 }
 
 let user;
 let comp;
-
-// let localScore = localStorage.setItem('score', JSON.stringify(score));
-let scoreParse = JSON.parse(localStorage.getItem('score'));
 
 function random() {
     let random = Math.random();
@@ -23,16 +20,16 @@ function heads() {
     user = 'Орёл';
     if (user == comp) {
         alert('Победа. Выпал Орёл');
-        scoreParse.wins = scoreParse.wins + 1;
-        score = localStorage.setItem('score', JSON.stringify(scoreParse));
-        document.getElementById('score').textContent = 'Побед: ' + scoreParse.wins;
+        score.wins ++;
+        localStorage.setItem('score', JSON.stringify(score));
+        document.getElementById('score').textContent = 'Побед: ' + score.wins;
     } else {
         alert('Поражение. Выпала Решка');
-        scoreParse.loses = scoreParse.loses + 1;
-        score = localStorage.setItem('score', JSON.stringify(scoreParse));
-        document.getElementById('score2').textContent = 'Поражений: ' + scoreParse.loses;
+        score.loses ++;
+        localStorage.setItem('score', JSON.stringify(score));
+        document.getElementById('score2').textContent = 'Поражений: ' + score.loses;
     }
-    console.log(scoreParse);
+    console.log(score);
 }
 
 function tails() {
@@ -40,17 +37,17 @@ function tails() {
     user = 'Орёл';
     if (user == comp) {
         alert('Победа. Выпала Решка');
-        scoreParse.wins = scoreParse.wins + 1;
-        score = localStorage.setItem('score', JSON.stringify(scoreParse));
-        document.getElementById('score').textContent = 'Побед: ' + scoreParse.wins;
+        score.wins ++;
+        localStorage.setItem('score', JSON.stringify(score));
+        document.getElementById('score').textContent = 'Побед: ' + score.wins;
     } else {
         alert('Поражение. Выпал Орёл');
-        scoreParse.loses = scoreParse.loses + 1;
-        score = localStorage.setItem('score', JSON.stringify(scoreParse));
-        document.getElementById('score2').textContent = 'Поражений: ' + scoreParse.loses;
+        score.loses ++;
+        localStorage.setItem('score', JSON.stringify(score));
+        document.getElementById('score2').textContent = 'Поражений: ' + score.loses;
     }
-    console.log(scoreParse);
+    console.log(score);
 }
 
-document.getElementById('score').textContent = 'Побед: ' + scoreParse.wins;
-document.getElementById('score2').textContent = 'Поражений: ' + scoreParse.loses;
+document.getElementById('score').textContent = 'Побед: ' + score.wins;
+document.getElementById('score2').textContent = 'Поражений: ' + score.loses;
